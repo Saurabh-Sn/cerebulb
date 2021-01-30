@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src='{% static "js/jquery.min.js" %}'></script>
+<script src='{% static "js/jquery.validate.min.js" %}'></script>
+
+</head>
+<div class="formouter">
+<div class="register-blk">
+    <h1>Edit product</h1>
+    <form id="add_form" method="POST">
+        {% csrf_token %}
+        <div class="row form-group">
+            <div class="col-lg-12"><input type="text" id="product_name" placeholder="Product name" name="product_name"></div>
+
+        </div>
+         <div class="row form-group">
+
+            <div class="col-lg-16"> <input type="text" placeholder="Product code" name="product_code"></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-lg-6">
+                <select placeholder="category" name="product_category">
+                {% if category %}
+                    <option selected disabled hidden>select category</option>
+                    {% for item in category %}
+                        <option value="{{ item.id }}">{{ item.category_name }}</option>
+                    {% endfor %}
+                {% else %}
+                        <option>No options</option>
+                {% endif %}
+                </select>
+             </div>
+
+        <div class=" form-group">
+            <label for="product_images">Select a Product picture:</label>
+                <input type="file" id="product_images" placeholder="product_images" name="product_images">
+        </div>
+        <div class=" form-group">
+            <input type="date" placeholder="product_mfg_date" name="product_mfg_date">
+        </div>
+
+        <button class="blue-btn" type="button" onclick="edit_product();">Submit</button>
+    </form>
+
+    </div>
+</div>
+</body>
+
+<script src='{% static "js/comman.js" %}'></script>
+<script src='{% static "js/product.js" %}?v={% now "Y-m-dH:i:s"%}'></script>
+</html>

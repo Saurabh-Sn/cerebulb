@@ -1,0 +1,45 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load rest_framework %}
+{% load i18n static %}
+
+<div class="grad forms-outer-sec">
+  <div class="inner-container">
+    <div class="cmn-round-box">
+      <div class="row align-items-center no-gutters">
+
+        </div>
+        <div class="col-md-6">
+          <div class="field-outer">
+             <form id="login" method="post">
+        {% csrf_token %}
+              <h1 class="head-sm">Log In Here!</h1>
+              <p class="sm-sub-head">Welcome Back. Please login to your account</p>
+                  {% if messages %}
+       {% for message in messages %}
+    	   <p style="color:red">{{ message }}</p>
+       {% endfor %}
+    {% endif %}
+                    {% render_field serializer.email  style=style %}
+                    {% render_field serializer.password  style=style %}
+              <div class="d-flex justify-content-between form-bottom-links">
+                <div>
+                    {% render_field serializer.remember_me  style=style %}
+                </div>
+
+              </div>
+              <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="submit" class="btn btn-block btn-login" placeholder="Enter your Password" >
+        </div>
+    </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

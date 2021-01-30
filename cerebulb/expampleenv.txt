@@ -1,0 +1,8 @@
+DB_NAME=cerebulb
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_PORT=3306
+SECRET_KEY=
+DEBUG=True
+ALLOWED_HOSTS='127.0.0.1, localhost'
